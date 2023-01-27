@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kalkulator</title>
+    <style type="text/css">
+        div {
+            float: left;
+            background-color: teal;
+            width: 50px;
+            height: 50px;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            vertical-align: middle;
+            font-family: Helvetica;
+            font-size: 200%;
+            border: #bbbbaa solid 4px;
+            border-radius: 10px;
+        }
+
+            div.resultbox {
+                width: 344px;
+                text-align: right;
+            }
+
+            div.firstinrow {
+                clear: left;
+            }
+    </style>
+</head>
+<body>
+    <p id="app"></p>
+
+<script type="text/javascript">
+ 
+    //model
+    let resultbox = '';
+
+    //view
+    view()
+    function view(){
+        let html =` <div class="resultbox"> ${resultbox}</div>
+        <div class="firstinrow" onclick="addcharacter(7)">7</div>
+        <div onclick="addCharacter(8)">8</div>
+            <div onclick="addCharacter(9)">9</div>
+            <div onclick="addCharacter('/')">/</div>
+            <div class="firstinrow" onclick="addCharacter(4)">4</div>
+            <div onclick="addCharacter(5)">5</div>
+            <div onclick="addCharacter(6)">6</div>
+            <div onclick="addCharacter('*')">*</div>
+            <div class="firstinrow" onclick="addCharacter(1)">1</div>
+            <div onclick="addCharacter(2)">2</div>
+            <div onclick="addCharacter(3)">3</div>
+            <div onclick="addCharacter('-')">-</div>
+            <div class="firstinrow" onclick="addCharacter(0)">0</div>
+            <div onclick="clearResult();">C</div>
+            <div onclick="calculate()">=</div>
+            <div onclick="addCharacter('+')">+</div>
+            <div class="firstinrow" onclick="addCharacter(10)">10</div>
+            <div onclick="addCharacter(11)">11</div>
+            <div onclick="addCharacter(12)">12</div>
+            <div onclick="addCharacter(13)">13</div>
+            <div class="firstinrow" onclick="addCharacter('+=')">+=</div>
+            <div onclick="addCharacter('-=')">-=</div>
+            <div onclick="addCharacter('*=')">*=</div>
+            <div onclick="addCharacter('/=')">/=</div>
+            <div class="firstinrow" onclick="addCharacter(100)">100</div>
+            <div onclick="addCharacter(200)">200</div>
+            <div onclick="addCharacter(500)">500</div>
+            <div onclick="addCharacter(1000)">1000</div>
+            <div class="firstinrow" onclick="addCharacter('%')">%</div>
+            <div onclick="addCharacter('++')">++</div>
+            <div onclick="addCharacter('--')">--</div>
+            <div onclick="addCharacter('&&')">&&</div>
+
+        `
+        document.getElementById('app').innerHTML = html;
+    }
+
+    //controller
+
+    function addCharacter(x) {
+        resultbox += x;
+        view();
+    }
+
+    function calculate() {
+        var calculation = resultbox
+        resultbox = eval(calculation);
+        view();
+    }
+    function clearResult() {
+        resultbox = '';
+        view();
+    }
+ 
+</script>    
+    
+</body>
+</html>
